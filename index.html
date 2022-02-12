@@ -51,6 +51,10 @@
             border-radius: 10px;
         }
 
+        .randomQuestionButton {
+            background-color: yellow;
+        }
+
         #questions {
             margin-left: 10px;
             margin-top: 10px;
@@ -6861,9 +6865,9 @@
                 <div id="my_right_col">
                     <button onclick="show_answer()">Show Answer</button>
                     <br>
-                    <button onclick="next_question()">Next Question</button>
+                    <button id="nextQuestionButton" onclick="next_question()" style="display:none" >Next Question</button>
                     <br>
-                    <button onclick="random_question()">Random Question</button>
+                    <button class="randomQuestionButton" onclick="random_question()">Random Question</button>
                 </div>
             </div>
 
@@ -6879,6 +6883,9 @@
                 //when show answer is clicked, the correct answer will be displayed in green
                 function show_answer() {
                     document.getElementById("ans_" + CURRENT_NUMBER).style.backgroundColor = "#6CFF58";
+                    var N = document.getElementById("nextQuestionButton");
+                    N.style.display = "inline-block";
+
                 }
 
                 //next question
@@ -6893,6 +6900,8 @@
                         CURRENT_NUMBER++;
                         document.getElementById("question_" + next_number).style.display = "block";
                     }
+                    var N = document.getElementById("nextQuestionButton");
+                    N.style.display = "none";
                 }
 
                 function random_question() {
@@ -6903,6 +6912,8 @@
                         CURRENT_NUMBER = Math.floor((Math.random() * 1000)) % AMOUNT_OF_QUESTIONS + 1;
                     }
                     document.getElementById("question_" + CURRENT_NUMBER).style.display = "block";
+                    var N = document.getElementById("nextQuestionButton");
+                    N.style.display = "none";
 
                 }
             </script>
